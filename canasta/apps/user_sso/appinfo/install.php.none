@@ -1,0 +1,7 @@
+<?php
+//Revisar
+
+$state = OCP\Config::getSystemValue('ssoIgnoreNamingRules', 'doSet');
+if($state == 'doSet'){
+	OCP\Config::setSystemValue('ssoIgnoreNamingRules', false);
+}

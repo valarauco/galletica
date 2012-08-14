@@ -31,6 +31,7 @@ class OC_Filestorage_Shared extends OC_Filestorage {
 	private $sourcePaths = array();
 	
 	public function __construct($arguments) {
+		error_log('[Share-storage] _construct: '.$arguments['datadir']);
 		$this->datadir = $arguments['datadir'];
 		$this->datadir .= "/";
 	}
@@ -71,6 +72,7 @@ class OC_Filestorage_Shared extends OC_Filestorage {
 	}
 	
 	public function opendir($path) {
+		error_log('[Share-storage] opendir: '.$path);
 		if ($path == "" || $path == "/") {
 			$path = $this->datadir.$path;
 			$sharedItems = OC_Share::getItemsInFolder($path);
@@ -189,6 +191,7 @@ class OC_Filestorage_Shared extends OC_Filestorage {
 	}
 	
 	public function filesize($path) {
+		error_log('[Share-storage] filesize: '.$path);
 		if ($path == "" || $path == "/" || $this->is_dir($path)) {
 			return $this->getFolderSize($path);
 		} else {
@@ -201,10 +204,12 @@ class OC_Filestorage_Shared extends OC_Filestorage {
 	}
 
 	public function getFolderSize($path) {
+		error_log('[Share-storage] foldersize (deprecated): '.$path);
 		return 0; //depricated
 	}
 	
 	private function calculateFolderSize($path) {
+		error_log('[Share-storage] calculateFolderSize: '.$path);
 		if ($this->is_file($path)) {
 			$path = dirname($path);
 		}
@@ -318,6 +323,7 @@ class OC_Filestorage_Shared extends OC_Filestorage {
 	}
 	
 	public function file_get_contents($path) {
+		error_log('[Share-storage] file_get_contents: '.$path);
 		$source = $this->getSource($path);
 		if ($source) {
 			$storage = OC_Filesystem::getStorage($source);
@@ -509,6 +515,7 @@ class OC_Filestorage_Shared extends OC_Filestorage {
 	}
 
 	public static function setup() {
+		error_log('[Share-storage] Setup!. ');
 		OC_Filesystem::mount('OC_Filestorage_Shared', array('datadir' => '/'.OCP\USER::getUser().'/files/Shared'), '/'.OCP\USER::getUser().'/files/Shared/');
 	}
 
