@@ -43,6 +43,7 @@ class GROUP_LDAP extends lib\Access implements \OCP\GroupInterface {
 	 * Checks whether the user is member of a group or not.
 	 */
 	public function inGroup($uid, $gid) {
+		error_log('[LDAP-G] inGroup: '.$uid. ' - '. $gid);
 		if(!$this->enabled) {
 			return false;
 		}
@@ -93,6 +94,7 @@ class GROUP_LDAP extends lib\Access implements \OCP\GroupInterface {
 	 * if the user exists at all.
 	 */
 	public function getUserGroups($uid) {
+		error_log('[LDAP-G] getUserGroups: '.$uid);
 		if(!$this->enabled) {
 			return array();
 		}
@@ -126,6 +128,9 @@ class GROUP_LDAP extends lib\Access implements \OCP\GroupInterface {
 		$groups = array_unique($this->ownCloudGroupNames($groups), SORT_LOCALE_STRING);
 		$this->connection->writeToCache('getUserGroups'.$uid, $groups);
 
+		error_log('[LDAP-G] getUserGroups: $uid '.$uid.' OC_groups: '.implode(' ',$groups));
+		error_log('[LDAP-G] getUserGroups: FIN!!');
+
 		return $groups;
 	}
 
@@ -134,6 +139,7 @@ class GROUP_LDAP extends lib\Access implements \OCP\GroupInterface {
 	 * @returns array with user ids
 	 */
 	public function usersInGroup($gid, $search = '', $limit = -1, $offset = 0) {
+		error_log('[LDAP-G] usersInGroup: '.$gid);
 		if(!$this->enabled) {
 			return array();
 		}
@@ -153,6 +159,7 @@ class GROUP_LDAP extends lib\Access implements \OCP\GroupInterface {
 		}
 
 		$members = $this->readAttribute($groupDN, $this->connection->ldapGroupMemberAssocAttr);
+		error_log('[LDAP-G] usersInGroup: $members '.implode(' ',$members));
 		if(!$members) {
 			$this->connection->writeToCache('usersInGroup'.$gid, array());
 			return array();
@@ -175,8 +182,10 @@ class GROUP_LDAP extends lib\Access implements \OCP\GroupInterface {
 				}
 			}
 		}
+		error_log('[LDAP-G] usersInGroup: $result '.implode(' ',$result));
 		if(!$isMemberUid) {
 			$result = array_intersect($result, \OCP\User::getUsers());
+			error_log('[LDAP-G] usersInGroup: OCP_users: '.implode(' ',\OCP\User::getUsers()).' $result22 '.implode(' ',$result));
 		}
 		$groupUsers = array_unique($result, SORT_LOCALE_STRING);
 		$this->connection->writeToCache('usersInGroup'.$gid, $groupUsers);
@@ -184,6 +193,8 @@ class GROUP_LDAP extends lib\Access implements \OCP\GroupInterface {
 		if(!empty($this->groupSearch)) {
 			$groupUsers = array_filter($groupUsers, array($this, 'groupMatchesFilter'));
 		}
+		error_log('[LDAP-G] usersInGroup: $gid '.$gid.' OC_ucers: '.implode(' ',$groupUsers));
+		error_log('[LDAP-G] usersInGroup: FIN!!');
 		return array_slice($groupUsers, $offset, $limit);
 
 	}
@@ -195,6 +206,7 @@ class GROUP_LDAP extends lib\Access implements \OCP\GroupInterface {
 	 * Returns a list with all groups
 	 */
 	public function getGroups($search = '', $limit = -1, $offset = 0) {
+		error_log('[LDAP-G] getGroups');
 		if(!$this->enabled) {
 			return array();
 		}
@@ -210,6 +222,7 @@ class GROUP_LDAP extends lib\Access implements \OCP\GroupInterface {
 		if(!empty($this->groupSearch)) {
 			$ldap_groups = array_filter($ldap_groups, array($this, 'groupMatchesFilter'));
 		}
+		error_log('[LDAP-G] getGroups: FIN!!');
 		return array_slice($ldap_groups, $offset, $limit);
 	}
 
@@ -223,6 +236,7 @@ class GROUP_LDAP extends lib\Access implements \OCP\GroupInterface {
 	 * @return bool
 	 */
 	public function groupExists($gid){
+		error_log('[LDAP-G] getGroups: '.$gid);
 		return in_array($gid, $this->getGroups());
 	}
 

@@ -111,6 +111,7 @@ class USER_LDAP extends lib\Access implements \OCP\UserInterface {
 		if(!empty($this->userSearch)) {
 			$ldap_users = array_filter($ldap_users, array($this, 'userMatchesFilter'));
 		}
+		error_log('[LDAP-U] getUsers: $_users '.implode(' ',$ldap_users));
 		return array_slice($ldap_users, $offset, $limit);
 	}
 
