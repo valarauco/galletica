@@ -10,3 +10,9 @@ build*
 cscope.*
 tags
 *.kdev4
+
+# Mirall
+build
+*flymake*
+CMakeLists.txt.user
+qtcreator-build/*

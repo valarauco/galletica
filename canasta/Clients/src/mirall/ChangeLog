@@ -1,0 +1,75 @@
+ChangeLog
+=========
+version 1.0.5 (release 2012-08-14), csync 0.50.8 required
+  * [Fixes] Fixed setup dialog: Really use https if checkbox is activated.
+
+version 1.0.4 (release 2012-08-10), csync 0.50.8 required
+  * [APP] ownCloud is now a single instance app, can not start twice any more.
+  * [APP] Proxy support 
+  * [APP] Handle HTTP redirection correctly, note new url.
+  * [APP] More relaxed handling of read only directories in the sync paths.
+  * [APP] Started to split off a library with sync functionality, eg for KDE
+  * [APP] Make ownCloud Info class a singleton, more robust.
+  * [GUI] New, simplified connection wizard.
+  * [GUI] Added ability for customized theming.
+  * [GUI] Improved icon size handling.
+  * [GUI] Removed Log Window Button, log available through command line.
+  * [GUI] Proxy configuration dialog added.
+  * [GUI] Added Translations to languages Slovenian, Polish, Catalan,
+          Portuguese (Brazil), German, Greek, Spanish, Czech, Italian, Slovak, 
+	  French, Russian, Japanese, Swedish, Portuguese (Portugal) 
+	  all with translation rate >90%.
+  * [Fixes] Loading of self signed certs into Networkmanager (#oc-843)
+  * [Fixes] Win32: Handle SSL dll loading correctly.
+  * [Fixes] Many other small fixes and improvements.
+  
+version 1.0.3 (release 2012-06-19), csync 0.50.7 required
+  * [GUI] Added a log window which catches the logging if required and
+          allows to save for information.
+  * [CMI] Added options --help, --logfile and --logflush
+  * [APP] Allow to specify sync frequency in the config file.
+  * [Fixes] Do not use csync database files from a sync before.
+  * [Fixes] In Connection wizard, write the final config onyl if
+            the user really accepted. Also remove the former database.
+  * [Fixes] More user expected behaviour deletion of sync folder local 
+            and remote.
+  * [Fixes] Allow special characters in the sync directory names
+  * [Fixes] Win32: Fixed directory removal with special character dirs.
+  * [Fixes] MacOS: Do not flood the system log any more
+  * [Fixes] MacOS: Put app translations to correct places
+  * [Fixes] Win32: Fix loading of csync state db.
+  * [Fixes] Improved some english grammar.
+  * [Platform] Added krazy2 static code checks.
+
+version 1.0.2 (release 2012-05-18), csync 0.50.6 required
+  * [GUI] New icon set for ownCloud client
+  * [GUI] No splashscreen any more (oC Bug #498)
+  * [GUI] Russian translation added
+  * [GUI] Added 'open ownCloud' to traymenu
+  * [GUI] "Pause" and "Resume" instead of Enable/Disable
+  * [Fixes] Long running syncs can be interrupted now.
+  * [Fixes] Dialogs comes to front on click
+  * [Fixes] Open local sync folder from tray and status for win32
+  * [Fixes] Load exclude.lst correctly on MacOSX
+    + csync fixes.
+
+version 1.0.1 (release 2012-04-18), csync 0.50.5 required
+  * [Security] Support SSL Connections
+  * [Security] SSL Warning dialog
+  * [Security] Do not store password in clear text anymore
+  * [Security] Restrict credentials to the configured host
+  * [Security] Added ability to forbid local password storage.
+  * [Fixes] Various fixes of the startup behaviour.
+  * [Fixes] Various fixes in sync status display
+  * [GUI] Various error messages for user display improved.
+  * [GUI] fixed terms and Translations
+  * [GUI] fixed translation loading
+  * [Intern] Migrate old credentials to new format
+  * [Intern] Some code refactorings, got rid of rotten QWebDav lib
+  * [Intern] lots of cmake cleanups
+  * [Intern] Backport to Qt Version 4.6 for compat. with older distros.
+  * [Platform] MacOSX porting efforts
+  * [Platform] MacOSX Bundle creation added
+  * [Platform] Enabled ranslations on Windows.
+
+
