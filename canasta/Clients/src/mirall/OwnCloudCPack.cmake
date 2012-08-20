@@ -2,7 +2,7 @@ include( InstallRequiredSystemLibraries )
 
 set( CPACK_PACKAGE_CONTACT  "Dominik Schmidt <domme@tomahawk-player.org>" )
 
-set( APPLICATION_NAME "ownCloud Client")
+set( APPLICATION_NAME "ownCloud Client - UCR")
 
 include( VERSION.cmake )
 set( CPACK_PACKAGE_VERSION_MAJOR  ${VERSION_MAJOR} )
@@ -13,7 +13,7 @@ set( CPACK_PACKAGE_VERSION  ${VERSION} )
 if(APPLE)
     set( CPACK_GENERATOR "DragNDrop" )
     set( CPACK_SOURCE_GENERATOR "")
-    set( CPACK_PACKAGE_FILE_NAME ownCloudClientSetup-${CPACK_PACKAGE_VERSION} )
+    set( CPACK_PACKAGE_FILE_NAME UCR-OwnCloudClientSetup-${CPACK_PACKAGE_VERSION} )
     set( CPACK_PACKAGE_ICON ${CMAKE_BINARY_DIR}/src/ownCloud.icns)
 
     set( CPACK_DMG_DS_STORE "${CMAKE_SOURCE_DIR}/admin/osx/DS_Store.in")
@@ -35,7 +35,7 @@ endif()
 
 
 if(WIN32)
-    set( CPACK_PACKAGE_FILE_NAME  owncloud-client-${CPACK_PACKAGE_VERSION}-setup )
+    set( CPACK_PACKAGE_FILE_NAME  UCR-owncloud-client-${CPACK_PACKAGE_VERSION}-setup )
     # Package file name without extension. Also a directory of installer  cmake-2.5.0-Linux-i686
     # CPACK_GENERATOR   CPack generator to be used  STGZ;TGZ;TZ
     # CPACK_INCLUDE_TOPLEVEL_DIRECTORY    Controls whether CPack adds a top-level directory, usually of the form ProjectName-Version-OS, to the top of package tree.  0 to disable, 1 to enable
@@ -46,7 +46,7 @@ if(WIN32)
     set( CPACK_PACKAGE_INSTALL_DIRECTORY  ${APPLICATION_NAME} )     # Installation directory on the target system -> C:\Program Files\fellody
     set( CPACK_PACKAGE_INSTALL_REGISTRY_KEY ${APPLICATION_NAME} )  # Registry key used when installing this project  CMake 2.5.0
     set( CPACK_PACKAGE_NAME  ${APPLICATION_NAME} ) # Package name, defaults to the project name
-    set( CPACK_PACKAGE_VENDOR  "http://owncloud.com" )   # Package vendor name
+    set( CPACK_PACKAGE_VENDOR  "http://www.ucr.ac.cr" )   # Package vendor name
 endif()
 
 # set( CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/LICENSE.txt" ) # License file for the project, used by the STGZ, NSIS, and PackageMaker generators.  /home/andy/vtk/CMake/Copyright.txt
