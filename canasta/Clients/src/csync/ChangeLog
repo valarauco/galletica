@@ -1,0 +1,131 @@
+ChangeLog
+==========
+version 0.50.8 (released 2012-08-10)
+  * Inode equivalent support for Win32 platforms to support rename
+  * ownCloud supports propagates renames from local to webdav MOVE
+  * ownCloud module works with proxy, settings from mirall.
+  * improved CMake modules (openSSL)
+  * Fixed namespace for lastmodified propset.
+  * Added cmocka based tests for ownCloud module.
+  * Added a config_test.h config header file.
+  * Fix link handling: Ignore symlinks.
+  * Modules can now report their capabilities to csync core.
+  * A lot of minor fixes and improvements.
+
+version 0.50.7 (released 2012-06-19)
+  * Added ability to log to a callback, ie. let the app 
+    catch the log output
+  * Added push to remote without pushing to temp file first.
+  * Fixed file copy function to use wide character (win32).
+  * Fixed loading of statedb if user has special char (win32).
+
+version 0.50.6 (released 2012-05-18)
+  * Directories with 'strange' characters broke sync. (oC bug #613)
+  * Special characters in Windows did not sync correctly. (oC bug #478)
+  * Make neon redirecting
+  * Switch logging off on Apple to not fill the syslog. (oC bug #622)
+
+version 0.50.5 (released 2012-04-18)
+  * removed argp lib dependency
+  * simplified and fixed CMake files
+  * MacOS porting efforts
+  * more granular error reports, thread save
+
+version 0.50.0 (released 2012-xx-xx)
+  * Added owncloud module.
+  * Added backup reconciler.
+  * Fixed serveral bugs.
+
+version 0.44.0 (released 2010-02-15)
+  * Migrated sftp module to libssh 0.4.
+  * Added more cache entries to the default config.
+  * Added missing requirements.
+  * Fixed build warnings.
+  * Fixed some memory leaks using sftp attributes.
+  * Some code cleanups.
+
+version 0.43.0 (released 2009-05-25)
+  * Added SFTP support with libssh 0.3.
+  * Added possibility to pass userdata to the auth function.
+  * Added a better version function.
+  * Fixed CMake build.
+  * Fixed CMake find modules.
+  * Fixed some flaws in cstd functions.
+  * Documented all public functions.
+
+version 0.42.0 (released 2009-02-10)
+  * Small fix in the userguide.
+
+version 0.42.0 rc3 (released 2009-01-23)
+  libcsync:
+  * Added checks for unix extensions.
+  * Added more documentation to the userguide.
+  * Fixed loading of plugins.
+  * Fixed call for deletion functions.
+  * Normalize the path to <hostname>/<path> for the statedb filename.
+  * More change name of client options to be more descriptive.
+
+version 0.42.0 rc2 (released 2009-01-07)
+  libcsync:
+  * Fixed a bug in the creation of the statedb
+  * Completed userguide
+
+version 0.42.0 rc1 (released 2008-12-04)
+  libcsync:
+  * Reduced calls of syscall functions.
+  * Added own function to create a temporary filename.
+  * Fixed libsmbclient 3.0.x support.
+
+version 0.42.0 beta1 (released 2008-09-10)
+
+  libcsync:
+  * Added a sftp module using libssh
+  * Added user guide (just a start)
+  * Added testcase for update detection
+  * Added a function to parse an uri to cstdlib
+  * Updated the manpage
+  * Fixed some segfaults in cstdlib
+  * Fixed some memory leaks
+
+  csync:
+  * Improved the auth callback
+
+version 0.42.0 alpha4 (released 2008-07-02)
+
+  libcsync:
+  * Added the possibility to run csync completely without a journal
+  * Improved chmod calls during propagation. Most of the time we use the
+    default mode and don't need to call chmod.
+  * Improved the exclude list handling in the file tree walker. This
+    increased the speed of the update detection.
+  * Fixed csync on PPC
+  * Fixed serveral small bugs
+
+  csync:
+  * Added commandline option to run csync completely without a journal
+  * Added a manpage
+
+version 0.42.0 alpha3 (released 2008-06-25)
+
+  libcsync:
+  * Added a tree merger to write a complete journal
+  * Added support to run csync without a journal
+  * Fixed kerberos support in csync_smb module
+  * Fixed closing of files after the copy
+  * Fixed update detection to detect special files (fifo, pipes,
+    char devices, ..)
+  * Fixed O_NOATIME flag on open() if we don't have the permission
+
+  csync:
+  * Add a variable to run csync completely without a journal
+
+version 0.42.0 alpha2 (released 2008-06-16)
+
+  libcsync:
+  * Peformance improvements
+  * Add more directories to the standard exclude file
+  * Bugfixes
+
+version 0.42.0 alpha1 (released 2008-06-02)
+
+  * Initial release
