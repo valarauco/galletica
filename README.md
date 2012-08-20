@@ -9,3 +9,6 @@ Galletica Project Repository - Universidad de Costa Rica
 * Web Mail
 * Calendar
 * IM
+
+Manuel Delgado <manuel.delgado@ucr.ac.cr>
+Reymer Vargas <reymer.vargas@ucr.ac.cr>
